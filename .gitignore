@@ -1,3 +1,6 @@
+*.o
 *.asv
 /try
 /tex
+/codes/ariod/cmake-*
+/codes/ariod/.idea
