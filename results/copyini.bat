@@ -1,0 +1,1 @@
+copy IV*.txt alliv.txt
