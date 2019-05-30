@@ -19,13 +19,13 @@ public:
 	~Hamilton() = default;
 	std::vector<std::vector<double> > p;
 	std::vector<std::vector<double> > q;
+	std::vector<double> t;
 	void solve(double step);
 
 private:
 	int dim;
 	std::vector<double> q0;
 	std::vector<double> p0;
-	std::vector<double> t;
 	double start;
 	double end;
 	std::vector<double> dp(const std::vector<double> &q);
