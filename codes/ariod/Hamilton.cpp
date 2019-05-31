@@ -42,7 +42,8 @@ void Hamilton::solve(double step)
 		0.521213104349955
 	};
 
-//Youshiba 8
+    //Youshiba 8
+    //#pragma omp parallel for schedule(static) reduction(+: result)
 	for (double time = start + step; time < end; time += step)
 	{
 		std::vector<double> q_now = q.back();
@@ -84,7 +85,7 @@ std::vector<double> Hamilton::dp(const std::vector<double> &q)
 	Hq.push_back(Ms * yj / pow(rj, 3));
 	Hq.push_back(Ms * xa / pow(ra, 3) + Mj * (xa - xj) / pow(daj, 3));
 	Hq.push_back(Ms * ya / pow(ra, 3) + Mj * (ya - yj) / pow(daj, 3));
-	return Hq;
+	return std::move(Hq);
 }
 
 std::vector<double> Hamilton::dq(const std::vector<double> &p)
