@@ -9,13 +9,13 @@ Known issue:
 3. The result is not correspond to experiment. [Better! 5/31]
 4. semi-major axis calculation may be wrong. [Not sure 5/31]
 
-###Update 5/29:
+### Update 5/29:
 
 sWe add the C++ program for this project.
 The program implements the algorithm by Yoshida http://cacs.usc.edu/education/phys516/Yoshida-symplectic-PLA00.pdf
 The program include a Hamiltonian class.
 
-###Update 5/31
+### Update 5/31
 
 Some improvement of this program.
 
