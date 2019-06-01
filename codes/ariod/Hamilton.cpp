@@ -81,6 +81,7 @@ std::vector<double> Hamilton::dp(const std::vector<double> &q)
 		ra = sqrt(xa * xa + ya * ya),
 		daj = sqrt((xa - xj) * (xa - xj) + (ya - yj) * (ya - yj));
 	std::vector<double> Hq;
+	Hq.reserve(4);
 	Hq.push_back(Ms * xj / pow(rj, 3));
 	Hq.push_back(Ms * yj / pow(rj, 3));
 	Hq.push_back(Ms * xa / pow(ra, 3) + Mj * (xa - xj) / pow(daj, 3));

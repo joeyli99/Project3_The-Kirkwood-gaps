@@ -57,7 +57,7 @@ int main() {
         double E = 0.5 * (vxa * vxa + vya * vya) - Ms / sqrt(xa * xa + ya * ya) -
                    Mj / sqrt((xa - xj) * (xa - xj) + (ya - yj) * (ya - yj));
         outdata << -2 * PI * PI / E << endl;
-        if (i % 10 == 0)
+        if (i % 100 == 0)
             cout << i << " ";
     }
     cout << "Output Result Finished!" << endl;
