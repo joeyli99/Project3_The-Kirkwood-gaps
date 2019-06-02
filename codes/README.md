@@ -21,3 +21,8 @@ Some improvement of this program.
 
 1. we make the time in Hamitonian class public. Which is a fool wrong.
 2. Some improvement of speed.
+
+### Update 6/2
+
+Improvement of the speed, we use vector.reserve()
+Now, the function can solve this symplectic ode (2000 years 1/16 steps) in 0.15s. 
