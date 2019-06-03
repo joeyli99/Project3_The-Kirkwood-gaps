@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 project(ariod)
-
-FIND_PACKAGE( OpenMP)
+include_directories(.)
+FIND_PACKAGE(OpenMP)
 if(OPENMP_FOUND)
     message("OPENMP FOUND")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
@@ -9,10 +9,8 @@ if(OPENMP_FOUND)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif()
 include_directories(SYSTEM ${OpenMP_INCLUDE_PATH})
+
 set(CMAKE_CXX_STANDARD 17)
-
-
-include_directories(.)
 
 add_executable(asteriod_10w2krandangle
         Hamilton.cpp

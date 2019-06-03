@@ -19,10 +19,10 @@ int main() {
     struct tm *pTm;
     pTm = gmtime(&systime);
     //std::random_device rd; Fuck gcc.
-    auto seed = systime; 
+    auto seed = systime;
     std::mt19937_64 e(seed); //seed the random generator by system time.
     std::uniform_real_distribution<double> u(0, 2 * PI); //uniform distribution phi.
-    //using the time to name the data 
+    //using the time to name the data
     char input_file[256] = {0};
     char output_file[256] = {0};
     sprintf_s(input_file, "IV%d-%d-%d%d-[(%d)_(%d)]randangle.txt", 1 + pTm->tm_mon, pTm->tm_mday, pTm->tm_hour,
@@ -46,7 +46,7 @@ int main() {
 
     //ifstream in_data(input_file);
 
-    #pragma omp parallel for
+#pragma omp parallel for
     for (int i = 0; i < n; i++) {
         double r, phi;
         r = rs[i];
@@ -54,7 +54,7 @@ int main() {
         //cout<<phi<<endl;
         vec q0 = {5.458104, 0, r * cos(phi), r * sin(phi)};
         vec p0 = {0, sqrt(Ms * (1 - 0.048912) / 5.458104),
-                 -sqrt(4 * PI * PI / r) * sin(phi),
+                  -sqrt(4 * PI * PI / r) * sin(phi),
                   sqrt(4 * PI * PI / r) * cos(phi)};
         Hamilton H(q0, p0, 0, years);
         H.solve(1.0 / 16.0);
