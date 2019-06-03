@@ -1,6 +1,13 @@
 cmake_minimum_required(VERSION 3.12)
-project(ariod)
+project(Asteriods)
+
+#Set Version Numerber
+set (Tutorial_VERSION_MAJOR 1)
+set (Tutorial_VERSION_MINOR 0)
+set(CMAKE_CXX_FLAGS "-O3 -Wall")
+
 include_directories(.)
+
 FIND_PACKAGE(OpenMP)
 if(OPENMP_FOUND)
     message("OPENMP FOUND")
@@ -10,9 +17,12 @@ if(OPENMP_FOUND)
 endif()
 include_directories(SYSTEM ${OpenMP_INCLUDE_PATH})
 
+add_subdirectory(fmt EXCLUDE_FROM_ALL)
+#include_directories(${fmt_INCLUDE_PATH})
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(asteriod_10w2krandangle
+add_executable(asteriod_5w2krandangle
         Hamilton.cpp
         Hamilton.h
         the_asteroids.cpp)
+target_link_libraries(asteriod_5w2krandangle fmt::fmt)

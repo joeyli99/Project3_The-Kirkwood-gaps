@@ -1,10 +1,14 @@
 #include<iostream>
 #include "Hamilton.h"
 
-const double PI = 3.14159265358979323846, Ms = 4 * PI * PI;
-const double Mj = Ms / 1047.56;
+constexpr double PI = 3.14159265358979323846, Ms = 4 * PI * PI;
+constexpr double Mj = Ms / 1047.56;
 
 void Hamilton::solve(double step) {
+    const int total = int(ceil((start-end))/step);
+    t.reserve(total);
+    p.reserve(total);
+    q.reserve(total);
     //solve the Hamilton system by Yoshida 8-order.
     double d[16] = {
             1.04242620869991,
@@ -50,13 +54,13 @@ void Hamilton::solve(double step) {
         std::array<double, 4> p_now = p.back();
 
         for (int i = 0; i < 16; i++) {
-            vec dq_now = dq(p_now);
+            PhaseVector dq_now = dq(p_now);
             double c_step = c[i];
             double d_step = d[i];
             for (int j = 0; j < dim; j++) {
                 q_now[j] += c_step * step * dq_now[j];
             }
-            vec dp_now = dp(q_now);
+            PhaseVector dp_now = dp(q_now);
             for (int j = 0; j < dim; j++) {
                 p_now[j] -= d_step * step * dp_now[j];
             }
@@ -68,20 +72,20 @@ void Hamilton::solve(double step) {
     //std::cout << "Solve END" << std::endl;
 }
 
-vec Hamilton::dp(const vec &q) {
-    double xj = q[0],
-            yj = q[1],
-            xa = q[2],
-            ya = q[3],
+PhaseVector Hamilton::dp(const PhaseVector &qarray) {
+    double xj = qarray[0],
+            yj = qarray[1],
+            xa = qarray[2],
+            ya = qarray[3],
             rj = sqrt(xj * xj + yj * yj),
             ra = sqrt(xa * xa + ya * ya),
             daj = sqrt((xa - xj) * (xa - xj) + (ya - yj) * (ya - yj));
-    vec Hq = {Ms * xj / pow(rj, 3), Ms * yj / pow(rj, 3),
+    PhaseVector Hq = {Ms * xj / pow(rj, 3), Ms * yj / pow(rj, 3),
               Ms * xa / pow(ra, 3) + Mj * (xa - xj) / pow(daj, 3),
               Ms * ya / pow(ra, 3) + Mj * (ya - yj) / pow(daj, 3)};
     return Hq;
 }
 
-vec Hamilton::dq(const vec &p) {
-    return p;
+PhaseVector Hamilton::dq(const PhaseVector &parray) {
+    return parray;
 }
