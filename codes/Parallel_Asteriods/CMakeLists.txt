@@ -21,7 +21,7 @@ add_subdirectory(fmt EXCLUDE_FROM_ALL)
 #include_directories(${fmt_INCLUDE_PATH})
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(asteriod_5w2krandangle
+add_executable(asteriod_released
         Hamilton.cpp
         Hamilton.h
         the_asteroids.cpp)
