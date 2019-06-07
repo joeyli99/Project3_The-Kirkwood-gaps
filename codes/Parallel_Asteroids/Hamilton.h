@@ -14,7 +14,7 @@ public:
         t.push_back(set_start);
         p.push_back(p0);
         q.push_back(q0);
-    };
+    }
 
     ~Hamilton() = default;
 

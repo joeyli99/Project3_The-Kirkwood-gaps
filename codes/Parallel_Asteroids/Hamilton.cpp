@@ -5,10 +5,9 @@ constexpr double PI = 3.14159265358979323846, Ms = 4 * PI * PI;
 constexpr double Mj = Ms / 1047.56;
 
 void Hamilton::solve(double step) {
-    const int total = int(ceil((start-end))/step);
-    t.reserve(total);
-    p.reserve(total);
-    q.reserve(total);
+    t.reserve(100000);
+    p.reserve(100000);
+    q.reserve(100000);
     //solve the Hamilton system by Yoshida 8-order.
     double d[16] = {
             1.04242620869991,
