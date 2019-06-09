@@ -25,4 +25,4 @@ add_executable(asteriod_released
         Hamilton.cpp
         Hamilton.h
         the_asteroids.cpp)
-target_link_libraries(asteriod_5w2krandangle fmt::fmt)
+target_link_libraries(asteriod_released fmt::fmt)
